@@ -38,6 +38,7 @@ right_datasets <- oml_datasets %>%
     filter(number.of.numeric.features != 1025) %>%
     filter(number.of.features < 20000) %>%
     filter(format == 'ARFF')
+# saveRDS(right_datasets, file = 'right_datasets.RDS')
 max(right_datasets[['number.of.features']])
 ggplot(right_datasets, aes(x = number.of.features)) +
     geom_histogram(binwidth = 50) +
@@ -55,3 +56,5 @@ for(i in 1:nrow(right_datasets)) {
         clearOMLCache()
     }, error = function(e) print(paste0('PULL failed: ', i, ' ', e)))
 }    
+
+
